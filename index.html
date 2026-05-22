@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imperial POS - ភោជនីយដ្ឋាន ហួ កាំង</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div id="Search" style="flex: 1;">
+            <input type="text" id="search-input" placeholder="ស្វែងរកម្ហូប ឬភេសជ្ជៈ (Search)..." onkeyup="searchProduct(this.value)">
+        </div>
+
+<div id="speakkhmer" style="text-align: center; padding: 20px;">
+    <button onclick="playMetaVoice()" class="meta-voice-btn">
+        <div class="pulse-ring"></div>
+        <span class="icon">🎙️</span>
+        <span class="text">សាកល្បងសំឡេង AI</span>
+    </button>
+</div>
+
+<style>
+    .meta-voice-btn {
+        position: relative;
+        background: rgba(0, 255, 255, 0.1);
+        border: 2px solid #00ffff;
+        color: #00ffff;
+        padding: 12px 24px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 50px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+        overflow: visible;
+    }
+
+    .meta-voice-btn:hover {
+        background: rgba(0, 255, 255, 0.2);
+        box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
+        transform: translateY(-2px);
+    }
+
+    .meta-voice-btn .icon {
+        font-size: 20px;
+        filter: drop-shadow(0 0 5px #00ffff);
+    }
+
+    /* Synthetic Pulse Effect */
+    .pulse-ring {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        border-radius: 50px;
+        border: 2px solid #00ffff;
+        animation: meta-pulse 2s infinite;
+        opacity: 0;
+    }
+
+    @keyframes meta-pulse {
+        0% { transform: scale(1); opacity: 0.5; }
+        100% { transform: scale(1.3); opacity: 0; }
+    }
+</style>
+
+<script>
+    function playMetaVoice() {
+        const text = "សូមអញ្ជើញភ្ញៀវទាំងអស់មកកាន់ភោជនីយដ្ឋាន ហួ កាំង។ នៅក្នុងពិភពឌីជីថលដ៏អស្ចារ្យនេះ ម្ហូបអាហារមិនមែនគ្រាន់តែជាអាហារទេ រាល់ម្ហូបអាហារទាំងអស់គឺជាការបកស្រាយដ៏វិសេសនៃអាណាចក្របុរាណ ដែលបានផ្លាស់ប្តូរទៅជាទម្រង់ឌីជីថល។ ហួ កាំង មិនមែនគ្រាន់តែជាកន្លែងសម្រាប់ទទួលទានអាហារប៉ុណ្ណោះទេ វាជាកន្លែងដែលកាស៊ីណូឌីជីថល, ធនាគារបែបឌីជីថល។ បានរួមបញ្ចូលគ្នាជាមួយនឹងការស្រាវជ្រាវបច្ចេកវិទ្យាដ៏ទំនើប។ នៅទីនេះ អ្នកនឹងទទួលបានបទពិសោធន៍ដ៏អស្ចារ្យ ដូចជាការចូលទៅក្នុងអាណាចក្រដែលគ្រប់យ៉ាងសុទ្ធតែជាឌីជីថល។ Where everything lives in the Digital World. Here, food isn’t just food, it’s light, and imagination. Every dish is like a story from the past, reborn in digital form.";
+    
+        // Use SpeechSynthesisUtterance for the synthetic voice
+        const msg = new SpeechSynthesisUtterance();
+        msg.text = text;
+        msg.lang = 'km-KH'; // Set to Khmer
+        
+        // Meta-synthetic adjustment: lower pitch and slower rate sounds more "AI"
+        msg.rate = 0.9; 
+        msg.pitch = 1.1; 
+
+        window.speechSynthesis.speak(msg);
+    }
+// 🛡️ ULTRA SECURE MODE - BLOCK ALL DEV TOOLS
+    (function() {
+      // Block right-click
+      document.addEventListener('contextmenu', e => {
+        e.preventDefault(); e.stopImmediatePropagation();
+        document.body.innerHTML = '<div style="background:black;color:#f00;font-family:monospace;text-align:center;padding-top:30vh;font-size:2em;">🚫 RESTAURANT CLASSIFIED - ACCESS DENIED</div>';
+        return false;
+      });
+
+      // Block ALL dev shortcuts
+      document.addEventListener('keydown', e => {
+        const blocked = ['F12', 'F1','F2','F3','F4','F5','F6','F7','F8','F9','F10','F11',
+                        'KeyI', 'KeyU', 'KeyS', 'KeyC'].includes(e.code) ||
+                       (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'i')) ||
+                       (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'C' || e.key === 'J'));
+        if (blocked) {
+          e.preventDefault(); e.stopImmediatePropagation();
+          document.title = '🚫 SECURE MODE ACTIVE';
+          return false;
+        }
+      }, true);
+
+      // DevTools detection loop
+      setInterval(() => {
+        if (window.outerHeight - window.innerHeight > 200 || 
+            window.outerWidth - window.innerWidth > 200 ||
+            (window.console && window.console.profiles)) {
+          document.body.innerHTML = '<div style="background:#000;color:#f00;font-family:monospace;text-align:center;padding-top:30vh;font-size:3em;">🕵️ DEVELOPER TOOLS DETECTED<br>RESTAURANT DATA TERMINATED</div>';
+        }
+      }, 500);
+
+      // Disable text selection
+      document.addEventListener('selectstart', e => e.preventDefault());
+      document.addEventListener('dragstart', e => e.preventDefault());
+    })();
+</script>
+        
+    </div>
+
+    <div id="category-bar">
+        <button class="btn-cat active" onclick="filter('All')">🍱 ទាំងអស់ (All)</button>
+	<button class="btn-cat" onclick="filter('Available')">📦 មាននៅក្នុងស្តុក (In Stock)</button>
+        <button class="btn-cat" onclick="filter('Food')">🍲 ម្ហូបអាហារ (Food)</button>
+        <button class="btn-cat" onclick="filter('Cigarette')">🚬 បារី (Cigarette)</button>
+        <button class="btn-cat" onclick="filter('Snack')">🍪 អាហារសម្រន់ (Snack)</button>
+        <button class="btn-cat" onclick="filter('Wine')">🍷 ស្រាក្រហម (Wine)</button>
+        <button class="btn-cat" onclick="filter('Alcohol')">🍾 ស្រាវីស្គី (Whisky)</button>
+    	<button class="btn-cat" onclick="filter('Coffee/Fresh Fruit')">🍹 ភេសជ្ជៈ (Coffee & Fresh Fruit)</button>
+        <button class="btn-cat" onclick="filter('Ice-cream')">🍦 ការ៉េម (Ice Cream)</button>
+    </div>
+
+    <div id="main-content">
+        <div id="menu"></div>
+
+        <div id="cart">
+            <div class="invoice-header">
+                <h2 style="color: var(--hologram-cyan); margin-bottom: 5px;">វិក្កយបត្រ / INVOICE</h2>
+                <p style="font-size: 0.8em; opacity: 0.8;">ភោជនីយដ្ឋាន ហួ កាំង (សាខាអូរស្មាច់ ខេត្តឧត្តមានជ័យ ព្រះរាជាណាចក្រកម្ពុជា)</p>
+            </div>
+
+            <div id="cart-list">
+                </div>
+
+            <div class="summary-section">
+                <hr style="border: 0.5px solid rgba(0,255,255,0.2); margin: 15px 0;">
+
+                <div class="summary-line">
+                    <span>តម្លៃសរុប (Subtotal):</span>
+                    <span id="subtotal">$0.00</span>
+                </div>
+
+                <div class="summary-line" style="color: #ff4d4d;">
+                    <span>បញ្ចុះតម្លៃ (Discount 15%):</span>
+                    <span id="discount">-$0.00</span>
+                </div>
+
+                <div class="summary-line grand-total">
+                    <span>សរុបត្រូវបង់:</span>
+                    <span id="final-total">$0.00</span>
+                </div>
+
+                <div id="bank-area">
+                    <div style="font-size: 0.85em; opacity: 0.9;">💸 ការទូទាត់តាមធនាគារ (KH Riel)</div>
+                    <div id="riel-total">0 ៛</div>
+                    <div style="font-size: 0.7em; opacity: 0.6; margin-top: 4px;">$1 = 4,000 ៛ (ប្តូរដោយស្វ័យប្រវត្តិ)</div>
+                </div>
+
+                <button onclick="checkout()" class="btn-check">
+                    CHECKOUT / បង់ប្រាក់
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="payment-modal" class="modal">
+        <div class="modal-content">
+            <h2 id="modal-title" style="color: var(--hologram-cyan);">ជ្រើសរើសវិធីទូទាត់</h2>
+            <p style="font-size: 0.8em; margin-bottom: 15px;">គណនី៖ HUOKAING THARA (002363507)</p>
+
+            <div id="qr-display">
+                </div>
+
+            <div class="payment-grid">
+                <button onclick="pay('ABA KHQR', this)" class="btn-pay aba">ABA KHQR</button>
+                <button onclick="pay('Visa Card', this)" class="btn-pay">Visa</button>
+                <button onclick="pay('MasterCard', this)" class="btn-pay">MasterCard</button>
+                <button onclick="pay('UnionPay', this)" class="btn-pay">UnionPay</button>
+            </div>
+
+            <div class="modal-footer">
+                <button onclick="completeTransaction()" class="btn-confirm">យល់ព្រម (Paid)</button>
+                <button onclick="closePayment()" class="btn-cancel">បោះបង់</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="admin-modal" class="modal">
+        <div class="modal-content" style="width: 600px; max-height: 80vh; overflow-y: auto;">
+            <h2 style="color: var(--hologram-cyan);">📦 គ្រប់គ្រងឃ្លាំងជ័យជោគ</h2>
+            <div id="admin-stock-list" style="margin-top: 20px; text-align: left;"></div>
+            <button onclick="document.getElementById('admin-modal').style.display='none'" class="btn-cancel" style="width: 100%; margin-top: 20px;">បិទផ្ទាំង Admin</button>
+        </div>
+    </div>
+
+<button onclick="openAdminPanel()" class="btn-admin-secret" style="
+    width: 100%; 
+    padding: 10px; 
+    background: #333; 
+    color: white; 
+    border: none; 
+    cursor: pointer;
+    font-weight: bold;
+">Admin</button>
+
+<div class="menu-bottom-container" style="
+    width: 100%; 
+    margin-top: auto; /* Pushes to bottom in a flex menu */
+    padding: 10px;
+    box-sizing: border-box;
+">
+    <div class="hologram-modal" style="
+        position: relative;
+        width: 100%; /* Spans full width of the menu */
+        background: rgba(0, 20, 40, 0.85); 
+        border: 1px solid rgba(0, 255, 255, 0.4); 
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+        backdrop-filter: blur(8px);
+        padding: 15px;
+        border-radius: 12px;
+        color: #00ffff;
+        font-family: 'Khmer OS', sans-serif;
+        overflow: hidden;
+    ">
+        <div class="holo-title" style="
+            text-align: center; 
+            margin-bottom: 10px; 
+            font-weight: bold; 
+            font-size: 1.1em;
+            text-shadow: 0 0 8px #00ffff;
+            position: relative;
+            z-index: 2;
+        ">
+            📍 ភោជនីយដ្ឋាន ហួ កាំង
+        </div>
+
+        <div class="map-wrapper" style="
+            position: relative;
+            width: 100%;
+            height: 200px; /* Adjust height as needed */
+            border-radius: 8px;
+            overflow: hidden;
+            z-index: 1;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+        ">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m0!3m2!1sen!2s!4v1715678901234!5m2!1skm!2s&z=2" 
+                width="100%" 
+                height="100%" 
+                style="border:0; filter: hue-rotate(170deg) invert(1) contrast(1.5) opacity(0.3);" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+            
+            <div class="scan-line"></div>
+        </div>
+
+        <div style="margin-top: 15px; position: relative; z-index: 2;">
+            <a href="https://www.google.com/maps/dir/?api=1&destination=11.8262314,104.9803321" target="_blank" style="
+                text-decoration: none;
+                background: #00ffff;
+                color: #001428;
+                padding: 10px;
+                border-radius: 6px;
+                display: block;
+                text-align: center;
+                font-weight: bold;
+                font-size: 0.9em;
+                box-shadow: 0 0 10px #00ffff;
+                transition: 0.3s;
+            " onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                🚀 មើលផ្លូវទៅកាន់ភោជនីយដ្ឋាន
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* ---------------------------------------------------------
+       ១. ចលនាស្កេន (Universal Scan Animation)
+    --------------------------------------------------------- */
+    .scan-line {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: rgba(0, 255, 255, 0.7);
+        box-shadow: 0 0 15px #00ffff, 0 0 5px rgba(255, 255, 255, 0.5);
+        animation: scan-process 4s linear infinite;
+        z-index: 10;
+        pointer-events: none; /* Allows clicking through the laser line */
+    }
+
+    @keyframes scan-process {
+        0% { top: 0%; opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { top: 100%; opacity: 0; }
+    }
+
+    /* ---------------------------------------------------------
+       ២. ការកំណត់ទំហំឆ្លាតវៃ (Responsive Breakpoints)
+    --------------------------------------------------------- */
+
+    /* ទូរស័ព្ទដៃ (Mobile Portrait) */
+    @media (max-width: 480px) {
+        .hologram-modal { 
+            width: 95% !important; 
+            margin: 10px auto; 
+            border-radius: 14px; 
+        }
+        .map-wrapper { height: 200px !important; }
+        .holo-title { font-size: 1.2em !important; }
+    }
+
+    /* ថេប្លេត ឬទូរស័ព្ទអេក្រង់ធំ (Tablets / Landscape Mobile) */
+    @media (min-width: 481px) and (max-width: 1024px) {
+        .hologram-modal { width: 80% !important; margin: 15px auto; }
+        .map-wrapper { height: 280px !important; }
+        .holo-title { font-size: 1.6em !important; }
+    }
+
+    /* អេក្រង់កុំព្យូទ័រ (Desktop & Large Screens) */
+    @media (min-width: 1025px) {
+        .hologram-modal { 
+            width: 450px !important; 
+            margin-left: 0; /* Aligns with POS sidebar */
+        }
+        .map-wrapper { height: 320px !important; }
+        .holo-title { font-size: 1.8em !important; }
+    }
+
+    /* ស្ទីលបន្ថែមសម្រាប់ Terminal (Bonus Visuals) */
+    .hologram-modal {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .hologram-modal:hover {
+        transform: scale(1.01);
+        box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+    }
+</style>
+
+<script src="app.js"></script>
+</body>
+</html> 

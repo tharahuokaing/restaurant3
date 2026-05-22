@@ -1,0 +1,1 @@
+���P++Ytablesqlite_sequencesqlite_sequenceCREATE TABLE sqlite_sequence(name,seq)s�EtablesalessalesCREATE TABLE sales (id INTEGER PRIMARY KEY AUTOINCREMENT, total REAL, it���#lack LabelAlcohol␦Fish Amok@FoodproductsCREATE TABLE products (id INTEGER PRIMARY KEY, name TEXT, price REAL, category TEXT)
