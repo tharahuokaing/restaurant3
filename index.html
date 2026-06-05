@@ -69,6 +69,22 @@
         0% { transform: scale(1); opacity: 0.5; }
         100% { transform: scale(1.3); opacity: 0; }
     }
+
+	.invoice-header {
+		text-align: center;
+		margin-bottom: 20px;
+	}
+
+	.invoice-logo {
+	    width: 90px;
+		height: auto;
+ 	   margin-bottom: 10px;
+    	display: block;
+    	margin-left: auto;
+    	margin-right: auto;
+    	border-radius: 12px;
+    	filter: drop-shadow(0 0 10px rgba(0,255,255,0.5));
+	}
 </style>
 
 <script>
@@ -140,10 +156,15 @@
     <div id="main-content">
         <div id="menu"></div>
 
-        <div id="cart">
+			<div id="cart">
             <div class="invoice-header">
+				<img
+					src="https://github.com/tharahuokaing/restaurant1/blob/main/logo-restaurant.png?raw=true"
+					alt="Restaurant Logo"
+					class="invoice-logo"
+				>
                 <h2 style="color: var(--hologram-cyan); margin-bottom: 5px;">វិក្កយបត្រ / INVOICE</h2>
-                <p style="font-size: 0.8em; opacity: 0.8;">ភោជនីយដ្ឋាន ផ្កាយ ៥ ហួ កាំង (សាខាអូរស្មាច់ ខេត្តឧត្តមានជ័យ ព្រះរាជាណាចក្រកម្ពុជា)</p>
+                <p style="font-size: 0.8em; opacity: 0.8;">ភភោជនីយដ្ឋាន ផ្កាយ ៥ ហួ កាំង (សាខាអូរស្មាច់ ខេត្តឧត្តមានជ័យ ព្រះរាជាណាចក្រកម្ពុជា)</p>
             </div>
 
             <div id="cart-list">
